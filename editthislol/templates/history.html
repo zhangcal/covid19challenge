@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Summary
+{% endblock %}
+
+{% block main %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Stock</th>
+      <th scope="col">Price</th>
+      <th scope="col">Shares</th>
+      <th scope="col">Time</th>
+      <th scope="col">Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in stonks %}
+      <tr>
+        <td>{{ row['symbol'] }}</td>
+        <td>{{ row['price'] }}</td>
+        <td>{{ row['shares'] }}</td>
+        <td>{{ row['timestamp'] }}</td>
+        {% if row['type'] == 0 %}
+            <td>Buy</td>
+        {% else %}
+            <td>Sell</td>
+        {% endif %}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
